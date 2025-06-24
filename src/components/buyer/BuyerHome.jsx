@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Item from "../../../../server/models/Item";
 
 const BuyerHome = () => {
   const [items, setItems] = useState([]);
