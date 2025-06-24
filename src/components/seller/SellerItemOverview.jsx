@@ -6,7 +6,7 @@ const SellerItemOverview = ({ itemId }) => {
 
   useEffect(() => {
     const fetchItem = async () => {
-      const res = await axios.get(`https://virtual-deal-room-backend-5k9z.onrender.com/api/items/${itemId}`, { withCredentials: true });
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/items/${itemId}`, { withCredentials: true });
       setItem(res.data);
     };
     fetchItem();

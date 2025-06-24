@@ -12,7 +12,7 @@ const BuyerHome = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const res = await axios.get("https://virtual-deal-room-backend-5k9z.onrender.com/api/items/all");
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/items/all`);
         setItems(res.data);
       } catch (err) {
         console.error("Failed to load items:", err);
@@ -119,7 +119,7 @@ const BuyerHome = () => {
               onClick={async () => {
                 try {
                   const res = await axios.post(
-                    "https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/create",
+                    `${import.meta.env.VITE_BACKEND_URL}/api/deals/create`,
                     {
                       itemId: dealItem._id,
                       buyerOfferPrice: Number(offerPrice),

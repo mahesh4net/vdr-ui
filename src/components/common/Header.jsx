@@ -10,7 +10,7 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("https://virtual-deal-room-backend-5k9z.onrender.com/api/auth/logout", {}, { withCredentials: true });
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {}, { withCredentials: true });
       dispatch(clearUser());
       navigate("/login");
     } catch (err) {

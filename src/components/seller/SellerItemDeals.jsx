@@ -7,7 +7,7 @@ const SellerItemDeals = ({ itemId }) => {
   useEffect(() => {
     const fetchDeals = async () => {
       try {
-        const res = await axios.get(`https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/item/${itemId}`, {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/deals/item/${itemId}`, {
           withCredentials: true,
         });
         setDeals(res.data);
@@ -22,7 +22,7 @@ const SellerItemDeals = ({ itemId }) => {
 
   const handleStatusUpdate = async (dealId, newStatus) => {
   try {
-    const res = await axios.patch(`https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/${dealId}`, {
+    const res = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/deals/${dealId}`, {
       status: newStatus,
     }, { withCredentials: true });
 
@@ -42,7 +42,7 @@ const handleCounter = async (dealId) => {
   if (!newPrice || isNaN(newPrice)) return alert('Invalid price');
 
   try {
-    const res = await axios.patch(`https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/${dealId}`, {
+    const res = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/deals/${dealId}`, {
       sellerOfferPrice: Number(newPrice),
     }, { withCredentials: true });
 

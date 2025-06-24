@@ -27,12 +27,14 @@ const Login = () => {
       password: "",
       role: "",
     });
+    
     try {
       const res = await axios.post(
-        "https://virtual-deal-room-backend-5k9z.onrender.com/api/auth/login",
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
         form,
         { withCredentials: true }
       );
+      console.log(res.data)
       dispatch(setUser(res.data.user));
       navigate("/");
     } catch (err) {
@@ -40,6 +42,7 @@ const Login = () => {
         setErrors(err.response.data.errors);
       } else {
         alert(err.response?.data?.message || "Registration failed");
+        console.log(err)
       }
     }
   };

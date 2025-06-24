@@ -6,7 +6,7 @@ const SellerItemPurchases = ({ itemId }) => {
 
   useEffect(() => {
     const fetchPurchases = async () => {
-      const res = await axios.get(`https://virtual-deal-room-backend-5k9z.onrender.com/api/payments/item/${itemId}`, {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/payments/item/${itemId}`, {
         withCredentials: true,
       });
       setPurchases(res.data);

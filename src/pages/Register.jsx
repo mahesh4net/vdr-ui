@@ -34,7 +34,7 @@ const Register = () => {
     });
     try {
       const res = await axios.post(
-        "https://virtual-deal-room-backend-5k9z.onrender.com/api/auth/register",
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/register`,
         form,
         {
           withCredentials: true,

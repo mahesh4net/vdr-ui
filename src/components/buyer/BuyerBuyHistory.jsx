@@ -7,7 +7,7 @@ const BuyerBuyHistory = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get('https://virtual-deal-room-backend-5k9z.onrender.com/api/payments/buyer', { withCredentials: true });
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/payments/buyer`, { withCredentials: true });
         setHistory(res.data);
       } catch (err) {
         console.error('Failed to load buy history', err);
