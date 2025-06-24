@@ -13,7 +13,7 @@ const BuyerDealOverview = ({ DealID }) => {
 
   useEffect(() => {
     const fetchItem = async () => {
-      const res = await axios.get(`/api/deals/deal/${DealID}`);
+      const res = await axios.get(`https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/deal/${DealID}`);
       console.log(res.data);
       setItem(res.data);
     };

@@ -8,7 +8,7 @@ const SellerItems = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const res = await axios.get('/api/items/mine', { withCredentials: true });
+      const res = await axios.get('https://virtual-deal-room-backend-5k9z.onrender.com/api/items/mine', { withCredentials: true });
       setItems(res.data);
     };
     fetchItems();

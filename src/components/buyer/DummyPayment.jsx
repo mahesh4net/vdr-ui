@@ -20,7 +20,7 @@ const total = quantity * deal.buyerOfferPrice;
   }
 
   try {
-    const res = await axios.patch(`/api/deals/${deal._id}/pay`, {
+    const res = await axios.patch(`https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/${deal._id}/pay`, {
       quantity,
       address,
       mobile,

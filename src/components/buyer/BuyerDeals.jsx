@@ -20,7 +20,7 @@ const BuyerDeals = () => {
   useEffect(() => {
     const fetchDeals = async () => {
       try {
-        const res = await axios.get("/api/deals/buyer", {
+        const res = await axios.get("https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/buyer", {
           withCredentials: true,
         });
         setDeals(res.data);
@@ -94,7 +94,7 @@ const BuyerDeals = () => {
 
                       axios
                         .patch(
-                          `/api/deals/buyer/${deal._id}`,
+                          `https://virtual-deal-room-backend-5k9z.onrender.com/api/deals/buyer/${deal._id}`,
                           { buyerOfferPrice: newOffer },
                           { withCredentials: true }
                         )

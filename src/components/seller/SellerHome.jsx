@@ -30,7 +30,7 @@ const SellerHome = () => {
 
     try {
       setLoading(true);
-      await axios.post('/api/items/create', formData, {
+      await axios.post('https://virtual-deal-room-backend-5k9z.onrender.com/api/items/create', formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' },
       });

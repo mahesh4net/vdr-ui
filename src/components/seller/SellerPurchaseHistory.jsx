@@ -7,7 +7,7 @@ const SellerPurchaseHistory = () => {
   useEffect(() => {
     const fetchPurchases = async () => {
       try {
-        const res = await axios.get('/api/payments/seller', {
+        const res = await axios.get('https://virtual-deal-room-backend-5k9z.onrender.com/api/payments/seller', {
           withCredentials: true,
         });
         setPurchases(res.data);

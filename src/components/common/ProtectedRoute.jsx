@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children }) => {
     const verifyUser = async () => {
       if (!user) {
         try {
-          const res = await axios.get('/api/auth/authenticate', { withCredentials: true });
+          const res = await axios.get('https://virtual-deal-room-backend-5k9z.onrender.com/api/auth/authenticate', { withCredentials: true });
           dispatch(setUser(res.data));
         } catch {
           setLoading(false);
