@@ -24,7 +24,7 @@ const SellerItems = () => {
             <img src={item.imageUrl} alt={item.title} className="item-thumb" />
             <div className="item-details">
               <h3>{item.title}</h3>
-              <p className="item-description">{item.description.slice(0, 120)}...</p>
+              <p className="item-description">{item.description.slice(0, 200)}...</p>
               <p><strong>₹{item.price}</strong></p>
               <button
                 className="primary-btn"

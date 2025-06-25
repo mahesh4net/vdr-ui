@@ -5,14 +5,20 @@ import SellerItems from './SellerItems';
 import SellerItemDetails from './SellerItemDetails';
 import SellerPurchaseHistory from './SellerPurchaseHistory';
 
+
 const SellerDashboard = () => {
   const location = useLocation();
   const isItemDetailsPage = location.pathname.includes('/dashboard/item/');
 
+
+
+
   return (
     <div className="dashboard-container">
+
       {/* Only show main sidebar if NOT on item details page */}
       {!isItemDetailsPage && <SellerSidebar />}
+      
       
       <div className="dashboard-content">
         <Routes>

@@ -778,6 +778,7 @@ body {
   background-color: #121212;
   color: #f1f1f1;
   font-family: 'Segoe UI', sans-serif;
+  position: relative;
 }
 
 .sidebar {
@@ -811,7 +812,7 @@ body {
 }
 
 .sidebar .active-link {
-  background-color: #00e676;
+  background-color: #00e676 !important;
   color: #000;
   font-weight: bold;
 }
@@ -866,3 +867,178 @@ body {
 .purchase-info p {
   margin: 4px 0;
 }
+
+
+
+
+/*media queryes*/
+
+@media (max-width: 700px){
+  .dashboard-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar{
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .sidebar a, .sidebar-title{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+
+
+}
+
+
+@media (max-width: 600px){
+  .item-thumb{
+    width: 40%;
+  }
+
+  .sidebar{
+    justify-content: center;
+  }
+
+  .sidebar-title{
+    display: none;
+  }
+  .vdr-header{
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vdr-header nav{
+    width: 100%;
+    flex-wrap: nowrap;
+    display: flex;
+    gap: 10px;
+  }
+
+  .vdr-header nav a, .vdr-header nav button{
+    min-width: 50% !important;
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+  }
+
+}
+
+
+@media (max-width: 425px){
+
+
+  .sidebar{
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .sidebar-title{
+    font-size: 1.2rem;
+  }
+
+  .dashboard-content{
+    padding: 10px;
+  }
+
+  .dashboard-page h2{
+    font-size: 1.3rem;
+  }
+
+  .hero-box {
+  padding: 20px;
+}
+
+.main-title{
+  font-size: 1.5rem;
+}
+
+.home-buttons button{
+  width: 100%;
+}
+
+.home-buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-container{
+  width: 80%;
+}
+
+.item-card{
+  flex-direction: column;
+}
+
+.item-thumb{
+  width: 100%;
+}
+
+}
+
+
+
+@media (max-width: 375px){
+
+
+
+.buyer-deal-card{
+  flex-direction: column;
+
+}
+
+.buyer-deal-left{
+  width: 100%;
+}
+
+.buyer-deal-img{
+  width: 100%;
+}
+
+.purchase-card{
+  flex-direction: column;
+
+}
+
+.purchase-img{
+  width: 100%;
+}
+
+
+
+}
+@media (max-width: 325px){
+
+.sidebar a{
+font-size: 1rem;
+padding: 5px 10px !important;
+
+}
+
+.sidebar{
+  flex-wrap: nowrap;
+}
+
+.item-menu{
+  padding: 10px;
+}
+
+.item-menu a{
+  padding: 5px 10px;
+}
+
+.auth-container{
+  width: 90%;
+  padding: 15px 10px;
+}
+
+}
+

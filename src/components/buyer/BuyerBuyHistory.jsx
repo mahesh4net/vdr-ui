@@ -26,12 +26,12 @@ const BuyerBuyHistory = () => {
           {history.map((entry) => (
             <div key={entry._id} className="purchase-card">
               <img
-                src={entry.item.imageUrl}
-                alt={entry.item.title}
+                src={entry.item?.imageUrl}
+                alt={entry.item?.title || 'item deleted'}
                 className="purchase-img"
               />
               <div className="purchase-info">
-                <p><strong>Item:</strong> {entry.item.title}</p>
+                <p><strong>Item:</strong> {entry.item?.title || 'item deleted'}</p>
                 <p><strong>Quantity:</strong> {entry.quantity}</p>
                 <p><strong>Total Paid:</strong> ₹{entry.totalAmount}</p>
                 <p><strong>Date:</strong> {new Date(entry.createdAt).toLocaleDateString()}</p>

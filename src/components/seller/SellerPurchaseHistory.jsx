@@ -29,7 +29,7 @@ const SellerPurchaseHistory = () => {
           {purchases.map((entry) => (
             <div key={entry._id} className="purchase-card">
               <div className="purchase-details">
-                <p><strong>Item:</strong> {entry.item?.title}</p>
+                <p><strong>Item:</strong> {entry.item?.title || 'item deleted'}</p>
                 <p><strong>Buyer:</strong> {entry.buyer?.fullname} ({entry.buyer?.email})</p>
                 <p><strong>Quantity:</strong> {entry.quantity}</p>
                 <p><strong>Total Earned:</strong> ₹{entry.totalAmount}</p>

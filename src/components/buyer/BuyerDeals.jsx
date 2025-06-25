@@ -47,14 +47,14 @@ const BuyerDeals = () => {
             >
               <div className="buyer-deal-left">
                 <img
-                  src={deal.item.imageUrl}
-                  alt={deal.item.title}
+                  src={deal.item?.imageUrl}
+                  alt={deal.item?.title || 'item deleted'}
                   className="buyer-deal-img"
                 />
               </div>
               <div className="buyer-deal-right">
                 <p>
-                  <strong>Item:</strong> {deal.item.title}
+                  <strong>Item:</strong> {deal.item?.title || 'deleted'}
                 </p>
                 <p>
                   <strong>Your Offer:</strong> ₹{deal.buyerOfferPrice}
