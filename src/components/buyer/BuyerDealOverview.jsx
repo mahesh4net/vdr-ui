@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DummyPayment from "./DummyPayment";
+import Loader from "../common/Loader";
 
 const BuyerDealOverview = ({ DealID }) => {
   const [item, setItem] = useState(null);
   const [selectedDeal, setSelectedDeal] = useState(null);
+  const [isLoading, setLoading] = useState(false)
   
   const handlePaySuccess = () => {
     setSelectedDeal(null);
@@ -13,14 +15,16 @@ const BuyerDealOverview = ({ DealID }) => {
 
   useEffect(() => {
     const fetchItem = async () => {
+      setLoading(true)
       const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/deals/deal/${DealID}`, {withCredentials: true});
-      console.log(res.data);
+     setLoading(false)
       setItem(res.data);
     };
     fetchItem();
   }, [DealID]);
 
-  if (!item) return <p>Loading item...</p>;
+  if (isLoading) return <Loader size={50} color={"white"} thickness={5}/>;
+  if (!isLoading && !item) return <p>canot find deal details</p>;
 
   return (
     <div>

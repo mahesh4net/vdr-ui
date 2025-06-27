@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import DummyPayment from "./DummyPayment"; // Make sure it's correctly imported
 import { useNavigate } from "react-router-dom";
+import Loader from "../common/Loader";
 
 const BuyerDeals = () => {
   const [deals, setDeals] = useState([]);
   const [selectedDeal, setSelectedDeal] = useState(null);
+  const [isLoading, setLoading] = useState(false)
+
   const navigate = useNavigate();
 
   const handlePaySuccess = () => {
@@ -19,12 +22,16 @@ const BuyerDeals = () => {
 
   useEffect(() => {
     const fetchDeals = async () => {
+      setLoading(true)
       try {
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/deals/buyer`, {
           withCredentials: true,
         });
+      
         setDeals(res.data);
+        setLoading(false)
       } catch (err) {
+        setLoading(false)
         console.error("Failed to load deals", err);
       }
     };
@@ -35,7 +42,8 @@ const BuyerDeals = () => {
   return (
     <div className="dashboard-page">
       <h2>Your Deals</h2>
-      {deals.length === 0 ? (
+
+      {isLoading ? <Loader size={50} color={"white"} thickness={5}/> : deals.length === 0 && !isLoading ?  (
         <p>You haven't made any deals yet.</p>
       ) : (
         <div className="buyer-deal-list">

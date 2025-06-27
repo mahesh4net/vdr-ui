@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
+import Loader from "../components/common/Loader";
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isLoading, setLoading] = useState(false)
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -21,6 +23,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     setErrors({
       fullname: "",
       email: "",
@@ -36,8 +39,10 @@ const Login = () => {
       );
       console.log(res.data)
       dispatch(setUser(res.data.user));
+      setLoading(false)
       navigate("/");
     } catch (err) {
+      setLoading(false)
       if (err.response?.data?.errors) {
         setErrors(err.response.data.errors);
       } else {
@@ -76,7 +81,7 @@ const Login = () => {
       </div>
 
       <button type="submit" className="primary-btn">
-        Login
+        {!isLoading ? 'Login' : <Loader size={15} color={"white"} thickness={3}/>}
       </button>
     </form>
   </div>

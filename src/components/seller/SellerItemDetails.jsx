@@ -7,7 +7,7 @@ import SellerItemPurchases from './SellerItemPurchases';
 const SellerItemDetails = () => {
   const { id } = useParams();
 
-  return (
+  return (     
     <div className="dashboard-page">
       <SellerItemMenu itemId={id} />
 

@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loader from '../common/Loader';
 
 const SellerPurchaseHistory = () => {
   const [purchases, setPurchases] = useState([]);
+  const [isLoading, setLoading] = useState(false)
+
 
   useEffect(() => {
     const fetchPurchases = async () => {
+      setLoading(true)
       try {
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/payments/seller`, {
           withCredentials: true,
         });
+        setLoading(fasle)
         setPurchases(res.data);
       } catch (err) {
+        setLoading(false)
         console.error('Failed to load seller purchases', err);
       }
     };
@@ -22,7 +28,7 @@ const SellerPurchaseHistory = () => {
   return (
     <div className="dashboard-page">
       <h2>Your Sales History</h2>
-      {purchases.length === 0 ? (
+      {isLoading ? <Loader size={50} color={"white"} thickness={5}/> : !isLoading && purchases.length === 0 ? (
         <p>You haven't sold any items yet.</p>
       ) : (
         <div className="purchase-list">

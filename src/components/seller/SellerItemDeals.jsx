@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../common/Loader";
 
 const SellerItemDeals = ({ itemId }) => {
   const [deals, setDeals] = useState([]);
+  const [isLoading, setLoading] = useState(false)
+
 
   useEffect(() => {
     const fetchDeals = async () => {
+      setLoading(true)
       try {
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/deals/item/${itemId}`, {
           withCredentials: true,
         });
+        setLoading(false)
         setDeals(res.data);
       } catch (err) {
+        setLoading(false)
         console.error("Error loading deals:", err);
       }
     };
@@ -58,9 +64,9 @@ const handleCounter = async (dealId) => {
 
 
   return (
-    <div>
+    <>
       <h2 style={{ marginBottom: "20px" }}>Deals for This Item</h2>
-      {deals.length === 0 ? (
+      {isLoading ? <Loader size={50} color={"white"} thickness={5}/> : !isLoading && deals.length === 0 ? (
         <p>No deals yet for this item.</p>
       ) : (
         <div className="deal-grid">
@@ -109,7 +115,8 @@ const handleCounter = async (dealId) => {
           ))}
         </div>
       )}
-    </div>
+     </>
+   
   );
 };
 

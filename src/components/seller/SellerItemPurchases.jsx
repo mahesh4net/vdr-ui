@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../common/Loader";
 
 const SellerItemPurchases = ({ itemId }) => {
   const [purchases, setPurchases] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchPurchases = async () => {
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/payments/item/${itemId}`, {
-        withCredentials: true,
-      });
+      setLoading(true);
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/payments/item/${itemId}`,
+        {
+          withCredentials: true,
+        }
+      );
+      setLoading(false);
       setPurchases(res.data);
-      console.log(res.data);
     };
     fetchPurchases();
   }, [itemId]);
@@ -18,7 +24,9 @@ const SellerItemPurchases = ({ itemId }) => {
   return (
     <div className="dashboard-page">
       <h2>Purchases</h2>
-      {purchases.length === 0 ? (
+      {isLoading ? (
+        <Loader size={50} color={"white"} thickness={5} />
+      ) : !isLoading && purchases.length === 0 ? (
         <p>No purchases yet.</p>
       ) : (
         purchases.map((p) => (

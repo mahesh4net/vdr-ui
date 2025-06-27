@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "../common/Loader";
 
 const BuyerHome = () => {
   const [items, setItems] = useState([]);
@@ -8,13 +9,18 @@ const BuyerHome = () => {
   const [dealItem, setDealItem] = useState(null);
   const [showDealForm, setShowDealForm] = useState(false);
   const [offerPrice, setOfferPrice] = useState("");
+  const [isLoading, setLoading] = useState(false)
+
 
   useEffect(() => {
     const fetchItems = async () => {
+      setLoading(true)
       try {
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/items/all`);
         setItems(res.data);
+        setLoading(false)
       } catch (err) {
+        setLoading(false)
         console.error("Failed to load items:", err);
       }
     };
@@ -37,6 +43,7 @@ const BuyerHome = () => {
       />
 
       <div className="item-grid">
+       {isLoading ? <Loader size={50} color={"white"} thickness={5}/> : !isLoading && filteredItems.length == 0 ? <p>no items found</p> : null}
         {filteredItems.map((item) => (
           <div
             className="item-card"
@@ -62,7 +69,6 @@ const BuyerHome = () => {
             </div>
           </div>
         ))}
-        {filteredItems.length === 0 && <p>No items found.</p>}
       </div>
 
       {selectedItem && (

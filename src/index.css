@@ -8,6 +8,12 @@
   --text-light: #f1f5f9;
 }
 
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -26,6 +32,23 @@ body {
     box-sizing: border-box;
 }
 
+.loader {
+  aspect-ratio: 1/1;
+  color: transparent;
+  border-radius: 50%;
+  border-right-color: transparent !important;
+  animation: rotate 1s ease-in-out infinite;
+  margin-inline: auto;
+  margin-block: auto;
+  align-self: center;
+  justify-self: center;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .primary-btn {
   background-color: #22c55e; 
@@ -117,6 +140,7 @@ body {
   background: #1f2937;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+  width: 100%;
 }
 
 .auth-container h2 {
@@ -205,8 +229,13 @@ body {
 .buyer-home {
   padding: 20px;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
 }
 
 /* 🔍 Search Bar */
@@ -233,6 +262,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-height: 100%;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .item-card {
@@ -434,7 +467,7 @@ body {
 /*seller dahshboard */
 .dashboard-container {
   display: flex;
-  min-height: 100vh;
+  flex: 1;
 }
 
 .sidebar {
@@ -486,6 +519,7 @@ body {
   background-color: #1f1f1f;
   border-bottom: 2px solid #333;
   margin-bottom: 25px;
+   width: 100%;
 }
 
 .menu-link {
@@ -619,6 +653,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 .buyer-deal-card {
@@ -774,7 +809,7 @@ body {
 /*buyer dashboard and dashboard*/
 .dashboard-container {
   display: flex;
-  min-height: 100vh;
+  flex: 1;
   background-color: #121212;
   color: #f1f1f1;
   font-family: 'Segoe UI', sans-serif;
@@ -818,10 +853,10 @@ body {
 }
 
 .dashboard-content {
-  flex: 1;
   padding: 30px;
   overflow-y: auto;
   background-color: #181818;
+
 }
 
 .dashboard-page h2 {
@@ -836,7 +871,12 @@ body {
   color: #ccc;
 }
 
-
+.dashboard-page{
+  min-height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
 
 /*buyer history*/
 
@@ -844,6 +884,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .purchase-card {
@@ -1029,6 +1070,7 @@ padding: 5px 10px !important;
 
 .item-menu{
   padding: 10px;
+ 
 }
 
 .item-menu a{
