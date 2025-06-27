@@ -94,6 +94,29 @@ body {
   transform: translateY(4px);
   box-shadow: 0 2px 0 #ca8a04;
 }
+.third-btn {
+  background-color: #f8f8f8;
+  color: #111827 !important; 
+  padding: 8px 20px !important;
+  font-size: 1rem !important;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #cdcdcd;
+  transition: all 0.15s ease-in-out;
+  position: relative;
+  display: inline-block;
+}
+
+.third-btn:hover {
+  background-color: #e6e5e4; 
+}
+
+.third-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #a7a6a5;
+}
 
 
 
@@ -499,6 +522,8 @@ body {
   padding: 30px;
   background: #1b1b1b;
   color: #eee;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard-page h2 {
@@ -918,6 +943,7 @@ body {
   .dashboard-container{
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
   }
 
   .sidebar{

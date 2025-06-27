@@ -26,8 +26,8 @@ const Header = () => {
         {!user ? (
           <>
             {" "}
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login" className="third-btn">Login</Link>
+            <Link to="/register" className="third-btn">Register</Link>
           </>
         ) : (
           <>
